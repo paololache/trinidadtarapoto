@@ -1,0 +1,105 @@
+.btn {
+    @include btn-base;
+    
+    // Botón primario
+    &--primary {
+      background-color: $color-primary;
+      color: $color-white;
+      border: $border-width-thin solid $color-primary;
+      
+      &:hover, &:focus {
+        background-color: $color-primary-dark;
+        border-color: $color-primary-dark;
+      }
+    }
+    
+    // Botón secundario
+    &--secondary {
+      background-color: $color-secondary;
+      color: $color-white;
+      border: $border-width-thin solid $color-secondary;
+      
+      &:hover, &:focus {
+        background-color: $color-secondary-dark;
+        border-color: $color-secondary-dark;
+      }
+    }
+    
+    // Botón de contorno
+    &--outline {
+      background-color: transparent;
+      color: $color-primary;
+      border: $border-width-thin solid $color-primary;
+      
+      &:hover, &:focus {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
+    
+    // Botón claro (para fondos oscuros)
+    &--light {
+      background-color: $color-white;
+      color: $color-primary;
+      border: $border-width-thin solid $color-white;
+      
+      &:hover, &:focus {
+        background-color: transparent;
+        color: $color-white;
+      }
+    }
+    
+    // Botón de acento
+    &--accent {
+      background-color: $color-accent;
+      color: $color-white;
+      border: $border-width-thin solid $color-accent;
+      
+      &:hover, &:focus {
+        background-color: $color-accent-dark;
+        border-color: $color-accent-dark;
+      }
+    }
+    
+    // Tamaños
+    &--sm {
+      padding: $spacing-xs $spacing-md;
+      font-size: $font-size-sm;
+    }
+    
+    &--lg {
+      padding: $spacing-md $spacing-xl;
+      font-size: $font-size-lg;
+    }
+    
+    // Estado deshabilitado
+    &:disabled, &--disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    // Botón de ancho completo
+    &--full {
+      display: block;
+      width: 100%;
+    }
+    
+    // Botón con icono
+    &--icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      
+      i, svg {
+        margin-right: $spacing-sm;
+      }
+      
+      &.btn--icon-right {
+        i, svg {
+          margin-right: 0;
+          margin-left: $spacing-sm;
+        }
+      }
+    }
+}

@@ -1,0 +1,69 @@
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: $spacing-md 0;
+    background-color: $color-white;
+    box-shadow: $shadow-sm;
+    z-index: $z-index-sticky;
+    
+    &__content {
+      @include flex($justify: space-between, $align: center);
+    }
+    
+    // Versión transparente para páginas con hero image
+    &--transparent {
+      position: absolute;
+      background-color: transparent;
+      box-shadow: none;
+      
+      .logo {
+        h1, span {
+          color: $color-white;
+        }
+      }
+      
+      .nav__link {
+        color: $color-white;
+        
+        &:hover, &:focus, &--active {
+          color: $color-white;
+          
+          &::after {
+            background-color: $color-white;
+          }
+        }
+      }
+      
+      .nav-toggle {
+        color: $color-white;
+      }
+    }
+  }
+  
+  // Logo
+  .logo {
+    h1 {
+      @include font-style($size: $font-size-xl, $weight: $font-weight-bold, $line-height: $line-height-tight);
+      margin: 0;
+      
+      span {
+        color: $color-primary;
+        font-weight: $font-weight-bold;
+      }
+      
+      @include respond-to(md) {
+        font-size: $font-size-2xl;
+      }
+    }
+    
+    a {
+      color: $color-text;
+      text-decoration: none;
+      
+      &:hover, &:focus {
+        color: $color-text;
+      }
+    }
+  }

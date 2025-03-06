@@ -1,11 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clínica Médica - Cuidando tu salud</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Clínica<span>Médica</span></h1>
+                    </a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Inicio</a></li>
+                        <li class="nav__item"><a href="servicios.html" class="nav__link">Nuestros Servicios</a></li>
+                        <li class="nav__item"><a href="especialidades.html" class="nav__link">Especialidades</a></li>
+                        <li class="nav__item"><a href="personal.html" class="nav__link">Personal Médico</a></li>
+                        <li class="nav__item"><a href="noticias.html" class="nav__link">Noticias</a></li>
+                        <li class="nav__item"><a href="contacto.html" class="nav__link">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <h2 class="hero__title">Cuidamos de tu salud con los mejores especialistas</h2>
+                <p class="hero__subtitle">Más de 20 años de experiencia brindando servicios médicos de calidad</p>
+                <div class="hero__cta">
+                    <a href="contacto.html" class="btn btn--primary">Agendar cita</a>
+                    <a href="servicios.html" class="btn btn--secondary">Conocer servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="featured-services">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios Destacados</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="service-card__title">Cardiología</h3>
+                    <p class="service-card__description">Diagnóstico y tratamiento de enfermedades cardiovasculares con tecnología de punta.</p>
+                    <a href="servicios.html" class="service-card__link">Leer más</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-card__title">Neurología</h3>
+                    <p class="service-card__description">Especialistas en el diagnóstico y tratamiento de trastornos del sistema nervioso.</p>
+                    <a href="servicios.html" class="service-card__link">Leer más</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3 class="service-card__title">Traumatología</h3>
+                    <p class="service-card__description">Tratamiento de lesiones y enfermedades del sistema musculoesquelético.</p>
+                    <a href="servicios.html" class="service-card__link">Leer más</a>
+                </div>
+            </div>
+            <div class="featured-services__more">
+                <a href="servicios.html" class="btn btn--outline">Ver todos los servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="why-us__content">
+                <div class="why-us__text">
+                    <h2 class="section-title">¿Por qué elegirnos?</h2>
+                    <ul class="why-us__list">
+                        <li><i class="fas fa-check-circle"></i> Médicos altamente calificados</li>
+                        <li><i class="fas fa-check-circle"></i> Tecnología médica avanzada</li>
+                        <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+                        <li><i class="fas fa-check-circle"></i> Instalaciones modernas y confortables</li>
+                        <li><i class="fas fa-check-circle"></i> Servicio de emergencias 24/7</li>
+                    </ul>
+                    <a href="especialidades.html" class="btn btn--primary">Conocer más</a>
+                </div>
+                <div class="why-us__image">
+                    <img src="assets/images/doctors-team.jpg" alt="Equipo médico">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial__content">
+                        <p class="testimonial__text">"El servicio y atención recibidos en la clínica fueron excelentes. El personal médico es muy profesional y las instalaciones son de primera calidad."</p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__author-info">
+                                <h4>María González</h4>
+                                <p>Paciente de Cardiología</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Más testimonios aquí -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="latest-news">
+        <div class="container">
+            <h2 class="section-title">Últimas noticias</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-card__image">
+                        <img src="assets/images/news-1.jpg" alt="Noticia sobre nuevo equipo médico">
+                    </div>
+                    <div class="news-card__content">
+                        <span class="news-card__date">10 Mar 2025</span>
+                        <h3 class="news-card__title">Adquirimos nuevo equipo de resonancia magnética</h3>
+                        <p class="news-card__excerpt">Nuestra clínica ha incorporado un nuevo equipo de resonancia magnética de última generación para mejorar el diagnóstico...</p>
+                        <a href="noticias.html" class="news-card__link">Leer más</a>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-card__image">
+                        <img src="assets/images/news-2.jpg" alt="Noticia sobre campaña de prevención">
+                    </div>
+                    <div class="news-card__content">
+                        <span class="news-card__date">2 Mar 2025</span>
+                        <h3 class="news-card__title">Campaña de prevención de diabetes</h3>
+                        <p class="news-card__excerpt">Iniciamos una campaña gratuita de detección temprana de diabetes. Consulta los horarios y requisitos...</p>
+                        <a href="noticias.html" class="news-card__link">Leer más</a>
+                    </div>
+                </article>
+            </div>
+            <div class="latest-news__more">
+                <a href="noticias.html" class="btn btn--outline">Ver todas las noticias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta__content">
+                <h2 class="cta__title">¿Necesitas atención médica?</h2>
+                <p class="cta__text">Programa una cita con nuestros especialistas</p>
+                <a href="contacto.html" class="btn btn--light">Contactar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__col">
+                    <div class="logo footer__logo">
+                        <h2>Clínica<span>Médica</span></h2>
+                    </div>
+                    <p>Brindando servicios médicos de calidad desde hace más de 20 años.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer__col">
+                    <h3 class="footer__title">Enlaces rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="especialidades.html">Especialidades</a></li>
+                        <li><a href="personal.html">Personal Médico</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__col">
+                    <h3 class="footer__title">Servicios</h3>
+                    <ul class="footer__links">
+                        <li><a href="servicios.html">Consultas médicas</a></li>
+                        <li><a href="servicios.html">Laboratorio clínico</a></li>
+                        <li><a href="servicios.html">Imágenes diagnósticas</a></li>
+                        <li><a href="servicios.html">Urgencias</a></li>
+                        <li><a href="servicios.html">Cirugía ambulatoria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__col">
+                    <h3 class="footer__title">Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Principal #123, Ciudad</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+123 456 7890</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@clinicamedica.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Vie: 8:00 - 20:00<br>Sáb: 9:00 - 14:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2025 Clínica Médica. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

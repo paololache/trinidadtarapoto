@@ -1,0 +1,252 @@
+// Tarjeta de servicio
+.service-card {
+    @include card-base;
+    padding: $spacing-xl;
+    text-align: center;
+    transition: transform $transition-normal, box-shadow $transition-normal;
+    height: 100%;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $shadow-lg;
+    }
+    
+    &__icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto $spacing-lg;
+      background-color: rgba($color-primary, 0.1);
+      border-radius: $border-radius-full;
+      @include flex($justify: center, $align: center);
+      
+      i, svg {
+        font-size: $font-size-3xl;
+        color: $color-primary;
+      }
+    }
+    
+    &__title {
+      @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
+      margin-bottom: $spacing-md;
+    }
+    
+    &__description {
+      margin-bottom: $spacing-lg;
+      color: $color-text-light;
+    }
+    
+    &__link {
+      @include font-style($weight: $font-weight-medium);
+      display: inline-block;
+      
+      &::after {
+        content: '→';
+        margin-left: $spacing-xs;
+        transition: margin-left $transition-normal;
+      }
+      
+      &:hover, &:focus {
+        &::after {
+          margin-left: $spacing-sm;
+        }
+      }
+    }
+  }
+  
+  // Tarjeta de personal/médico
+  .staff-card {
+    @include card-base;
+    overflow: hidden;
+    
+    &__image {
+      height: 280px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-normal;
+      }
+    }
+    
+    &:hover {
+      .staff-card__image img {
+        transform: scale(1.05);
+      }
+    }
+    
+    &__content {
+      padding: $spacing-lg;
+    }
+    
+    &__name {
+      @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
+      margin-bottom: $spacing-xs;
+    }
+    
+    &__specialty {
+      color: $color-primary;
+      margin-bottom: $spacing-md;
+      @include font-style($weight: $font-weight-medium);
+    }
+    
+    &__bio {
+      margin-bottom: $spacing-lg;
+      color: $color-text-light;
+    }
+    
+    &__contact {
+      @include flex($align: center);
+      
+      .btn {
+        margin-right: $spacing-sm;
+      }
+      
+      .social-links {
+        @include flex($align: center);
+        
+        a {
+          margin-left: $spacing-sm;
+          width: 32px;
+          height: 32px;
+          border-radius: $border-radius-full;
+          background-color: $color-background-light;
+          color: $color-text;
+          @include flex($justify: center, $align: center);
+          
+          &:hover, &:focus {
+            background-color: $color-primary;
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+  
+  // Tarjeta de noticias
+  .news-card {
+    @include card-base;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    &__image {
+      height: 200px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-normal;
+      }
+    }
+    
+    &:hover {
+      .news-card__image img {
+        transform: scale(1.05);
+      }
+    }
+    
+    &__content {
+      padding: $spacing-lg;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    &__date {
+      display: inline-block;
+      margin-bottom: $spacing-sm;
+      color: $color-text-light;
+      font-size: $font-size-sm;
+    }
+    
+    &__title {
+      @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
+      margin-bottom: $spacing-md;
+    }
+    
+    &__excerpt {
+      margin-bottom: $spacing-lg;
+      color: $color-text-light;
+      flex-grow: 1;
+    }
+    
+    &__link {
+      @include font-style($weight: $font-weight-medium);
+      align-self: flex-start;
+      
+      &::after {
+        content: '→';
+        margin-left: $spacing-xs;
+        transition: margin-left $transition-normal;
+      }
+      
+      &:hover, &:focus {
+        &::after {
+          margin-left: $spacing-sm;
+        }
+      }
+    }
+  }
+  
+  // Testimonios
+  .testimonial {
+    @include card-base;
+    padding: $spacing-xl;
+    margin: $spacing-md;
+    
+    &__content {
+      position: relative;
+      padding-top: $spacing-xl;
+      
+      &::before {
+        content: '\201C';
+        position: absolute;
+        top: -20px;
+        left: -10px;
+        font-size: 80px;
+        line-height: 1;
+        color: rgba($color-primary, 0.2);
+        font-family: sans-serif;
+      }
+    }
+    
+    &__text {
+      margin-bottom: $spacing-lg;
+      font-style: italic;
+      color: $color-text;
+    }
+    
+    &__author {
+      @include flex($align: center);
+    }
+    
+    &__avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: $border-radius-full;
+      margin-right: $spacing-md;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    &__author-info {
+      h4 {
+        @include font-style($weight: $font-weight-semibold);
+        margin-bottom: 0;
+      }
+      
+      p {
+        color: $color-text-light;
+        font-size: $font-size-sm;
+      }
+    }
+  }
