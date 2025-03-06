@@ -136,6 +136,7 @@
     border-radius: $border-radius-md;
     box-shadow: $shadow-lg;
     padding: $spacing-xl;
+    border-top: 4px solid $color-primary;
     
     &__title {
       text-align: center;
