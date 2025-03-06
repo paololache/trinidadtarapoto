@@ -92,12 +92,141 @@ document.addEventListener('DOMContentLoaded', () => {
         setupMobileNav();
     }
     
+    // Inicializar carrusel hero
+    initHeroCarousel();
+    
     // Inicializar sliders/carousels si existen
     initializeSliders();
     
     // Inicializar formularios
     initializeForms();
 });
+
+/**
+ * Inicializa el carrusel de la sección hero
+ */
+function initHeroCarousel() {
+    const carousel = document.querySelector('.hero-carousel');
+    if (!carousel) return;
+    
+    const slides = carousel.querySelectorAll('.hero-carousel__slide');
+    const dots = carousel.querySelectorAll('.hero-carousel__dot');
+    let currentSlide = 0;
+    let interval;
+    let isAnimating = false;
+    
+    // Añadir efecto de zoom a las diapositivas
+    slides.forEach(slide => {
+        slide.classList.add('hero-carousel__slide--zoom');
+    });
+    
+    // Función para mostrar un slide específico con animación
+    function showSlide(index) {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        // Ocultar todos los slides
+        slides.forEach(slide => {
+            slide.classList.remove('hero-carousel__slide--active');
+            slide.classList.remove('hero-carousel__slide--previous');
+        });
+        
+        // Marcar el slide actual como el anterior para la animación
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.add('hero-carousel__slide--previous');
+        }
+        
+        // Desactivar todos los dots
+        dots.forEach(dot => {
+            dot.classList.remove('hero-carousel__dot--active');
+        });
+        
+        // Activar el slide actual
+        slides[index].classList.add('hero-carousel__slide--active');
+        dots[index].classList.add('hero-carousel__dot--active');
+        
+        // Actualizar índice actual
+        currentSlide = index;
+        
+        // Permitir nueva animación después de completar la transición
+        setTimeout(() => {
+            isAnimating = false;
+        }, 1500); // Un poco más que la duración de la transición
+    }
+    
+    // Función para avanzar al siguiente slide
+    function nextSlide() {
+        let next = currentSlide + 1;
+        if (next >= slides.length) {
+            next = 0;
+        }
+        showSlide(next);
+    }
+    
+    // Función para ir al slide anterior
+    function prevSlide() {
+        let prev = currentSlide - 1;
+        if (prev < 0) {
+            prev = slides.length - 1;
+        }
+        showSlide(prev);
+    }
+    
+    // Iniciar carrusel automático
+    function startCarousel() {
+        interval = setInterval(nextSlide, 6000); // Cambiar cada 6 segundos
+    }
+    
+    // Detener carrusel automático
+    function stopCarousel() {
+        clearInterval(interval);
+    }
+    
+    // Crear botones de navegación anterior/siguiente
+    const prevButton = document.createElement('button');
+    prevButton.className = 'hero-carousel__nav hero-carousel__nav--prev';
+    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    prevButton.setAttribute('aria-label', 'Imagen anterior');
+    
+    const nextButton = document.createElement('button');
+    nextButton.className = 'hero-carousel__nav hero-carousel__nav--next';
+    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    nextButton.setAttribute('aria-label', 'Imagen siguiente');
+    
+    carousel.appendChild(prevButton);
+    carousel.appendChild(nextButton);
+    
+    // Agregar event listeners a los botones de navegación
+    prevButton.addEventListener('click', () => {
+        stopCarousel();
+        prevSlide();
+        startCarousel();
+    });
+    
+    nextButton.addEventListener('click', () => {
+        stopCarousel();
+        nextSlide();
+        startCarousel();
+    });
+    
+    // Agregar event listeners a los dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            if (currentSlide !== index) {
+                stopCarousel();
+                showSlide(index);
+                startCarousel();
+            }
+        });
+    });
+    
+    // Agregar event listeners para pausar al hacer hover
+    carousel.addEventListener('mouseenter', stopCarousel);
+    carousel.addEventListener('mouseleave', startCarousel);
+    
+    // Iniciar carrusel
+    startCarousel();
+}
 
 /**
  * Inicializa los sliders/carousels del sitio
