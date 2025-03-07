@@ -1806,29 +1806,17 @@ em, .text-italic {
   transform: translateY(-5px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-.specialty-card__image {
-  height: 200px;
-  overflow: hidden;
-}
-.specialty-card__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-.specialty-card:hover .specialty-card__image img {
-  transform: scale(1.05);
-}
 .specialty-card__content {
   padding: 1.5rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 .specialty-card__icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 0 1rem;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem;
   background-color: rgba(76, 175, 80, 0.1);
   border-radius: 9999px;
   display: flex;
@@ -1861,6 +1849,7 @@ em, .text-italic {
   padding-left: 1.5rem;
   margin-bottom: 0.5rem;
   color: #6c757d;
+  text-align: left;
 }
 .specialty-card__features li::before {
   content: "✓";
@@ -1869,7 +1858,7 @@ em, .text-italic {
   color: #4CAF50;
 }
 .specialty-card__link {
-  align-self: flex-start;
+  align-self: center;
 }
 .specialty-card__link:after {
   content: "→";
