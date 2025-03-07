@@ -291,7 +291,7 @@ em, .text-italic {
 }
 
 .text-accent {
-  color: #8E24AA;
+  color: #689F38;
 }
 
 .text-white {
@@ -315,7 +315,7 @@ em, .text-italic {
 }
 
 .bg-accent {
-  background-color: #8E24AA;
+  background-color: #689F38;
 }
 
 .bg-white {
@@ -423,7 +423,7 @@ em, .text-italic {
 }
 
 .border-accent {
-  border-color: #8E24AA;
+  border-color: #689F38;
 }
 
 .d-none {
@@ -666,13 +666,13 @@ em, .text-italic {
   color: #ffffff;
 }
 .btn--accent {
-  background-color: #8E24AA;
+  background-color: #689F38;
   color: #ffffff;
-  border: 1px solid #8E24AA;
+  border: 1px solid #689F38;
 }
 .btn--accent:hover, .btn--accent:focus {
-  background-color: #6A1B9A;
-  border-color: #6A1B9A;
+  background-color: #3d911c;
+  border-color: #3d911c;
 }
 .btn--sm {
   padding: 0.25rem 1rem;
@@ -1688,7 +1688,7 @@ em, .text-italic {
 
 .cta {
   padding: 4rem 0;
-  background: linear-gradient(rgba(106, 27, 154, 0.9), rgba(106, 27, 154, 0.9)), url("../assets/images/cta-bg.jpg");
+  background: linear-gradient(rgba(61, 145, 28, 0.9), rgba(61, 145, 28, 0.9)), url("../assets/images/cta-bg.jpg");
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -1717,7 +1717,7 @@ em, .text-italic {
 .page-banner {
   position: relative;
   padding: 4rem 0;
-  background: linear-gradient(rgba(106, 27, 154, 0.8), rgba(106, 27, 154, 0.8)), url("../assets/images/specialties-bg.jpg");
+  background: linear-gradient(rgba(61, 145, 28, 0.8), rgba(61, 145, 28, 0.8)), url("../assets/images/specialties-bg.jpg");
   background-size: cover;
   background-position: center;
   color: #ffffff;
