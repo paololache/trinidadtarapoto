@@ -1,120 +1,121 @@
+
 .footer {
-    padding-top: $spacing-3xl;
-    background-color: #f8f9fa;
-    color: $color-text;
+  padding-top: $spacing-3xl;
+  background-color: #f8f9fa;
+  color: $color-text;
+  
+  &__content {
+    @include grid(1, $spacing-xl);
+    margin-bottom: $spacing-2xl;
     
-    &__content {
-      @include grid(1, $spacing-xl);
-      margin-bottom: $spacing-2xl;
-      
-      @include respond-to(md) {
-        @include grid(2, $spacing-xl);
-      }
-      
-      @include respond-to(lg) {
-        @include grid(4, $spacing-xl);
-      }
+    @include respond-to(md) {
+      @include grid(2, $spacing-xl);
     }
     
-    &__logo {
-      margin-bottom: $spacing-md;
+    @include respond-to(lg) {
+      @include grid(4, $spacing-xl);
+    }
+  }
+  
+  &__logo {
+    margin-bottom: $spacing-md;
+    
+    h2 {
+      @include font-style($size: $font-size-xl, $weight: $font-weight-bold);
       
-      h2 {
-        @include font-style($size: $font-size-xl, $weight: $font-weight-bold);
-        
-        span {
-          color: $color-primary;
-        }
+      span {
+        color: $color-primary;
       }
     }
-    
-    &__col {
-      p {
-        color: $color-text-light;
-        margin-bottom: $spacing-lg;
-      }
-    }
-    
-    &__title {
-      @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
+  }
+  
+  &__col {
+    p {
+      color: $color-text-light;
       margin-bottom: $spacing-lg;
-      position: relative;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 50px;
-        height: 2px;
-        background-color: $color-primary;
-      }
     }
+  }
+  
+  &__title {
+    @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
+    margin-bottom: $spacing-lg;
+    position: relative;
     
-    &__links {
-      li {
-        margin-bottom: $spacing-sm;
-        
-        a {
-          color: $color-text-light;
-          transition: color $transition-normal, padding-left $transition-normal;
-          
-          &:hover, &:focus {
-            color: $color-primary;
-            padding-left: $spacing-xs;
-          }
-        }
-      }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: $color-primary;
     }
-    
-    .contact-info {
-      li {
-        @include flex($align: flex-start);
-        margin-bottom: $spacing-md;
-        
-        i {
-          color: $color-primary;
-          min-width: 20px;
-          margin-right: $spacing-sm;
-          margin-top: 4px;
-        }
-        
-        span {
-          color: $color-text-light;
-        }
-      }
-    }
-    
-    .social-links {
-      @include flex($align: center);
+  }
+  
+  &__links {
+    li {
+      margin-bottom: $spacing-sm;
       
       a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        background-color: $color-background-dark;
-        color: $color-text;
-        border-radius: $border-radius-full;
-        margin-right: $spacing-sm;
-        transition: background-color $transition-normal, color $transition-normal;
+        color: $color-text-light;
+        transition: color $transition-normal, padding-left $transition-normal;
         
         &:hover, &:focus {
-          background-color: $color-primary;
-          color: $color-white;
+          color: $color-primary;
+          padding-left: $spacing-xs;
         }
       }
     }
-    
-    &__bottom {
-      border-top: 1px solid $color-border;
-      padding: $spacing-lg 0;
-      text-align: center;
+  }
+  
+  .contact-info {
+    li {
+      @include flex($align: flex-start);
+      margin-bottom: $spacing-md;
       
-      p {
+      i {
+        color: $color-primary;
+        min-width: 20px;
+        margin-right: $spacing-sm;
+        margin-top: 4px;
+      }
+      
+      span {
         color: $color-text-light;
-        margin: 0;
       }
     }
+  }
+  
+  .social-links {
+    @include flex($align: center);
+    
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: $color-background-dark;
+      color: $color-text;
+      border-radius: $border-radius-full;
+      margin-right: $spacing-sm;
+      transition: background-color $transition-normal, color $transition-normal;
+      
+      &:hover, &:focus {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
+  }
+  
+  &__bottom {
+    border-top: 1px solid $color-border;
+    padding: $spacing-lg 0;
+    text-align: center;
+    
+    p {
+      color: $color-text-light;
+      margin: 0;
+    }
+  }
 }

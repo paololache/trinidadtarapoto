@@ -1,129 +1,131 @@
+
+
 // Página de contacto
 .contact-section {
-    padding: $spacing-3xl 0;
+  padding: $spacing-3xl 0;
+}
+
+// Contenedor principal de contacto
+.contact-container {
+  @include grid(1, $spacing-2xl);
+  
+  @include respond-to(lg) {
+    @include grid(2, $spacing-2xl);
+  }
+}
+
+// Información de contacto
+.contact-info {
+  .section-title {
+    margin-bottom: $spacing-lg;
   }
   
-  // Contenedor principal de contacto
-  .contact-container {
-    @include grid(1, $spacing-2xl);
-    
-    @include respond-to(lg) {
-      @include grid(2, $spacing-2xl);
-    }
+  > p {
+    color: $color-text-light;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Detalles de contacto
+.contact-details {
+  margin-bottom: $spacing-2xl;
+  
+  li {
+    @include flex($align: flex-start);
+    margin-bottom: $spacing-xl;
   }
   
-  // Información de contacto
-  .contact-info {
-    .section-title {
-      margin-bottom: $spacing-lg;
-    }
+  &__icon {
+    min-width: 50px;
+    height: 50px;
+    background-color: rgba($color-primary, 0.1);
+    border-radius: $border-radius-full;
+    @include flex($justify: center, $align: center);
+    margin-right: $spacing-lg;
     
-    > p {
-      color: $color-text-light;
-      margin-bottom: $spacing-xl;
-    }
-  }
-  
-  // Detalles de contacto
-  .contact-details {
-    margin-bottom: $spacing-2xl;
-    
-    li {
-      @include flex($align: flex-start);
-      margin-bottom: $spacing-xl;
-    }
-    
-    &__icon {
-      min-width: 50px;
-      height: 50px;
-      background-color: rgba($color-primary, 0.1);
-      border-radius: $border-radius-full;
-      @include flex($justify: center, $align: center);
-      margin-right: $spacing-lg;
-      
-      i {
-        font-size: $font-size-xl;
-        color: $color-primary;
-      }
-    }
-    
-    &__content {
-      h3 {
-        @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
-        margin-bottom: $spacing-xs;
-      }
-      
-      p {
-        color: $color-text-light;
-      }
+    i {
+      font-size: $font-size-xl;
+      color: $color-primary;
     }
   }
   
-  // Redes sociales
-  .social-media {
+  &__content {
     h3 {
       @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
-      margin-bottom: $spacing-md;
+      margin-bottom: $spacing-xs;
     }
     
-    .social-links {
-      @include flex($align: center);
+    p {
+      color: $color-text-light;
+    }
+  }
+}
+
+// Redes sociales
+.social-media {
+  h3 {
+    @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
+    margin-bottom: $spacing-md;
+  }
+  
+  .social-links {
+    @include flex($align: center);
+    
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba($color-primary, 0.1);
+      color: $color-primary;
+      border-radius: $border-radius-full;
+      margin-right: $spacing-sm;
+      transition: background-color $transition-normal, color $transition-normal;
       
-      a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: rgba($color-primary, 0.1);
-        color: $color-primary;
-        border-radius: $border-radius-full;
-        margin-right: $spacing-sm;
-        transition: background-color $transition-normal, color $transition-normal;
-        
-        &:hover, &:focus {
-          background-color: $color-primary;
-          color: $color-white;
-        }
+      &:hover, &:focus {
+        background-color: $color-primary;
+        color: $color-white;
       }
     }
   }
-  
-  // Contenedor del formulario
-  .contact-form-container {
-    .section-title {
-      margin-bottom: $spacing-lg;
-    }
-    
-    > p {
-      color: $color-text-light;
-      margin-bottom: $spacing-xl;
-    }
+}
+
+// Contenedor del formulario
+.contact-form-container {
+  .section-title {
+    margin-bottom: $spacing-lg;
   }
   
-  // Formulario de contacto
-  .contact-form {
-    @include card-base;
-    padding: $spacing-xl;
-    
-    .form__group {
-      margin-bottom: $spacing-lg;
-    }
-    
-    .form__actions {
-      margin-top: $spacing-xl;
-    }
+  > p {
+    color: $color-text-light;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Formulario de contacto
+.contact-form {
+  @include card-base;
+  padding: $spacing-xl;
+  
+  .form__group {
+    margin-bottom: $spacing-lg;
   }
   
-  // Mapa de ubicación
-  .location-map {
-    height: 450px;
+  .form__actions {
+    margin-top: $spacing-xl;
+  }
+}
+
+// Mapa de ubicación
+.location-map {
+  height: 450px;
+  width: 100%;
+  
+  iframe {
+    display: block;
     width: 100%;
-    
-    iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+    height: 100%;
+    border: none;
   }
+}

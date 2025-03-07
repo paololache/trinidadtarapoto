@@ -106,39 +106,54 @@ document.addEventListener('DOMContentLoaded', () => {
  * Inicializa el carrusel de la sección hero
  */
 function initHeroCarousel() {
+    // Verificación de elementos - Usando console.log para depuración
     const carousel = document.querySelector('.hero-carousel');
-    if (!carousel) return;
+    if (!carousel) {
+        console.error('Elemento del carrusel no encontrado');
+        return;
+    }
+    
+    console.log('Carrusel encontrado:', carousel);
     
     const slides = carousel.querySelectorAll('.hero-carousel__slide');
+    if (slides.length === 0) {
+        console.error('No se encontraron diapositivas en el carrusel');
+        return;
+    }
+    
+    console.log('Diapositivas encontradas:', slides.length);
+    
     const dots = carousel.querySelectorAll('.hero-carousel__dot');
+    if (dots.length === 0) {
+        console.error('No se encontraron indicadores en el carrusel');
+        return;
+    }
+    
+    console.log('Indicadores encontrados:', dots.length);
+    
     let currentSlide = 0;
     let interval;
-    let isAnimating = false;
     
-    // Añadir efecto de zoom a las diapositivas
-    slides.forEach(slide => {
-        slide.classList.add('hero-carousel__slide--zoom');
-    });
-    
-    // Función para mostrar un slide específico con animación
+    // Función simplificada para mostrar un slide específico
     function showSlide(index) {
-        if (isAnimating) return;
-        isAnimating = true;
+        console.log('Cambiando a diapositiva:', index);
         
-        // Ocultar todos los slides
-        slides.forEach(slide => {
-            slide.classList.remove('hero-carousel__slide--active');
-            slide.classList.remove('hero-carousel__slide--previous');
-        });
-        
-        // Marcar el slide actual como el anterior para la animación
-        if (slides[currentSlide]) {
-            slides[currentSlide].classList.add('hero-carousel__slide--previous');
+        // Asegurar que el índice esté dentro del rango
+        if (index < 0 || index >= slides.length) {
+            console.error('Índice de diapositiva fuera de rango:', index);
+            return;
         }
         
+        // Ocultar todos los slides
+        slides.forEach((slide, i) => {
+            slide.classList.remove('hero-carousel__slide--active');
+            console.log(`Slide ${i} active:`, slide.classList.contains('hero-carousel__slide--active'));
+        });
+        
         // Desactivar todos los dots
-        dots.forEach(dot => {
+        dots.forEach((dot, i) => {
             dot.classList.remove('hero-carousel__dot--active');
+            console.log(`Dot ${i} active:`, dot.classList.contains('hero-carousel__dot--active'));
         });
         
         // Activar el slide actual
@@ -148,14 +163,12 @@ function initHeroCarousel() {
         // Actualizar índice actual
         currentSlide = index;
         
-        // Permitir nueva animación después de completar la transición
-        setTimeout(() => {
-            isAnimating = false;
-        }, 1500); // Un poco más que la duración de la transición
+        console.log('Diapositiva actual después del cambio:', currentSlide);
     }
     
     // Función para avanzar al siguiente slide
     function nextSlide() {
+        console.log('Avanzando a la siguiente diapositiva');
         let next = currentSlide + 1;
         if (next >= slides.length) {
             next = 0;
@@ -163,69 +176,79 @@ function initHeroCarousel() {
         showSlide(next);
     }
     
-    // Función para ir al slide anterior
-    function prevSlide() {
-        let prev = currentSlide - 1;
-        if (prev < 0) {
-            prev = slides.length - 1;
-        }
-        showSlide(prev);
-    }
-    
     // Iniciar carrusel automático
     function startCarousel() {
-        interval = setInterval(nextSlide, 6000); // Cambiar cada 6 segundos
+        console.log('Iniciando carrusel automático');
+        // Limpiar cualquier intervalo existente antes de crear uno nuevo
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 5000); // Cambiar cada 5 segundos
     }
     
     // Detener carrusel automático
     function stopCarousel() {
+        console.log('Deteniendo carrusel automático');
         clearInterval(interval);
     }
     
-    // Crear botones de navegación anterior/siguiente
-    const prevButton = document.createElement('button');
-    prevButton.className = 'hero-carousel__nav hero-carousel__nav--prev';
-    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
-    prevButton.setAttribute('aria-label', 'Imagen anterior');
-    
-    const nextButton = document.createElement('button');
-    nextButton.className = 'hero-carousel__nav hero-carousel__nav--next';
-    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
-    nextButton.setAttribute('aria-label', 'Imagen siguiente');
-    
-    carousel.appendChild(prevButton);
-    carousel.appendChild(nextButton);
-    
-    // Agregar event listeners a los botones de navegación
-    prevButton.addEventListener('click', () => {
-        stopCarousel();
-        prevSlide();
-        startCarousel();
-    });
-    
-    nextButton.addEventListener('click', () => {
-        stopCarousel();
-        nextSlide();
-        startCarousel();
-    });
-    
-    // Agregar event listeners a los dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            if (currentSlide !== index) {
-                stopCarousel();
-                showSlide(index);
-                startCarousel();
+    // Crear botones de navegación anterior/siguiente de manera más robusta
+    if (!carousel.querySelector('.hero-carousel__nav--prev')) {
+        const prevButton = document.createElement('button');
+        prevButton.className = 'hero-carousel__nav hero-carousel__nav--prev';
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevButton.setAttribute('aria-label', 'Imagen anterior');
+        carousel.appendChild(prevButton);
+        
+        // Agregar event listener para el botón anterior
+        prevButton.addEventListener('click', function() {
+            console.log('Botón anterior clickeado');
+            stopCarousel();
+            let prev = currentSlide - 1;
+            if (prev < 0) {
+                prev = slides.length - 1;
             }
+            showSlide(prev);
+            startCarousel();
         });
+    }
+    
+    if (!carousel.querySelector('.hero-carousel__nav--next')) {
+        const nextButton = document.createElement('button');
+        nextButton.className = 'hero-carousel__nav hero-carousel__nav--next';
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextButton.setAttribute('aria-label', 'Imagen siguiente');
+        carousel.appendChild(nextButton);
+        
+        // Agregar event listener para el botón siguiente
+        nextButton.addEventListener('click', function() {
+            console.log('Botón siguiente clickeado');
+            stopCarousel();
+            nextSlide();
+            startCarousel();
+        });
+    }
+    
+    // Agregar event listeners a los dots de manera más robusta
+    dots.forEach((dot, index) => {
+        // Remover event listeners existentes para evitar duplicados
+        dot.removeEventListener('click', dotClickHandler);
+        
+        // Agregar nuevo event listener
+        dot.addEventListener('click', dotClickHandler);
+        
+        function dotClickHandler() {
+            console.log('Indicador clickeado:', index);
+            stopCarousel();
+            showSlide(index);
+            startCarousel();
+        }
     });
     
-    // Agregar event listeners para pausar al hacer hover
-    carousel.addEventListener('mouseenter', stopCarousel);
-    carousel.addEventListener('mouseleave', startCarousel);
-    
-    // Iniciar carrusel
+    // Iniciar carrusel con la primera diapositiva
+    console.log('Configuración inicial del carrusel');
+    showSlide(0); // Asegurar que la primera diapositiva esté activa
     startCarousel();
+    
+    console.log('Carrusel inicializado completamente');
 }
 
 /**

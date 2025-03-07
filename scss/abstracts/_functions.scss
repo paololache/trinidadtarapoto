@@ -1,0 +1,73 @@
+// Funciones útiles para el manejo de valores
+
+// Convertir px a rem
+@function rem($pixels, $context: 16) {
+    @return ($pixels / $context) * 1rem;
+  }
+  
+  // Convertir px a em
+  @function em($pixels, $context: 16) {
+    @return ($pixels / $context) * 1em;
+  }
+  
+  // Obtener color de mapa
+  @function color($color-name) {
+    @if map-has-key($colors, $color-name) {
+      @return map-get($colors, $color-name);
+    }
+    
+    @warn "El color '#{$color-name}' no existe en el mapa $colors.";
+    @return null;
+  }
+  
+  // Obtener z-index de mapa
+  @function z-index($key) {
+    @if map-has-key($z-indices, $key) {
+      @return map-get($z-indices, $key);
+    }
+    
+    @warn "El z-index '#{$key}' no existe en el mapa $z-indices.";
+    @return null;
+  }
+  
+  // Verificar si un valor es oscuro para elegir texto claro
+  @function is-dark($color) {
+    // Obtener los componentes RGB
+    $red: red($color);
+    $green: green($color);
+    $blue: blue($color);
+    
+    // Calcular el brillo según la especificación W3C
+    $brightness: ($red * 299 + $green * 587 + $blue * 114) / 1000;
+    
+    @return $brightness < 128;
+  }
+  
+  // Función para generar un color de texto basado en el fondo
+  @function text-color-for-bg($bg-color) {
+    @if is-dark($bg-color) {
+      @return #ffffff; // Texto claro para fondos oscuros
+    } @else {
+      @return #212529; // Texto oscuro para fondos claros
+    }
+  }
+  
+  // Función para ajustar un color (aclararlo u oscurecerlo)
+  @function adjust-color($color, $amount) {
+    @if is-dark($color) {
+      @return lighten($color, $amount); // Aclarar un color oscuro
+    } @else {
+      @return darken($color, $amount); // Oscurecer un color claro
+    }
+  }
+  
+  // Función para interpolar entre dos colores
+  @function color-mix($color1, $color2, $weight: 50%) {
+    $weight: $weight / 100%;
+    $red: red($color1) * $weight + red($color2) * (1 - $weight);
+    $green: green($color1) * $weight + green($color2) * (1 - $weight);
+    $blue: blue($color1) * $weight + blue($color2) * (1 - $weight);
+    @return rgb($red, $green, $blue);
+  }
+
+  

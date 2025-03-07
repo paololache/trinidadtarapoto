@@ -1,75 +1,77 @@
+
+
 /* Reset básico */
 *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text;
+  background-color: $color-background;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-normal;
   
-  html {
-    font-size: 16px;
-    scroll-behavior: smooth;
+  &:hover {
+    color: $color-primary-dark;
   }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
   
-  body {
-    font-family: $font-primary;
-    font-size: $font-size-base;
-    line-height: $line-height-normal;
-    color: $color-text;
-    background-color: $color-background;
-    overflow-x: hidden;
-    min-height: 100vh;
+  &:focus {
+    outline: none;
   }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  a {
-    color: $color-primary;
-    text-decoration: none;
-    transition: color $transition-normal;
-    
-    &:hover {
-      color: $color-primary-dark;
-    }
-  }
-  
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    
-    &:focus {
-      outline: none;
-    }
-  }
-  
-  ul, ol {
-    list-style: none;
-  }
-  
-  /* Clases de accesibilidad */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-  
-  .container {
-    @include container;
-  }
-  
-  /* Prevenir desbordamiento de texto en elementos inline */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Clases de accesibilidad */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  @include container;
+}
+
+/* Prevenir desbordamiento de texto en elementos inline */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

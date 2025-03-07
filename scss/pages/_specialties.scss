@@ -1,356 +1,358 @@
+
+
 // Banner de página
 .page-banner {
-    position: relative;
-    padding: $spacing-3xl 0;
-    background: linear-gradient(rgba($color-accent-dark, 0.8), rgba($color-accent-dark, 0.8)), url('../assets/images/specialties-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: $color-white;
-    text-align: center;
+  position: relative;
+  padding: $spacing-3xl 0;
+  background: linear-gradient(rgba($color-accent-dark, 0.8), rgba($color-accent-dark, 0.8)), url('../assets/images/specialties-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: $color-white;
+  text-align: center;
+  
+  &__title {
+    @include font-style($size: $font-size-4xl, $weight: $font-weight-bold);
+    margin-bottom: $spacing-md;
+  }
+  
+  &__breadcrumb {
+    @include flex($justify: center, $align: center);
+    margin-top: $spacing-lg;
     
-    &__title {
-      @include font-style($size: $font-size-4xl, $weight: $font-weight-bold);
-      margin-bottom: $spacing-md;
-    }
-    
-    &__breadcrumb {
-      @include flex($justify: center, $align: center);
-      margin-top: $spacing-lg;
+    li {
+      position: relative;
+      padding: 0 $spacing-md;
       
-      li {
-        position: relative;
-        padding: 0 $spacing-md;
-        
-        &:not(:last-child) {
-          &::after {
-            content: '/';
-            position: absolute;
-            right: 0;
-            color: rgba($color-white, 0.7);
-          }
-        }
-        
-        a {
+      &:not(:last-child) {
+        &::after {
+          content: '/';
+          position: absolute;
+          right: 0;
           color: rgba($color-white, 0.7);
-          
-          &:hover, &:focus {
-            color: $color-white;
-          }
         }
+      }
+      
+      a {
+        color: rgba($color-white, 0.7);
         
-        &.active {
+        &:hover, &:focus {
           color: $color-white;
         }
       }
-    }
-  }
-  
-  // Sección de especialidades
-  .specialties {
-    padding: $spacing-3xl 0;
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: $spacing-lg;
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto $spacing-2xl;
-      color: $color-text-light;
-    }
-  }
-  
-  // Lista de especialidades
-  .specialty-list {
-    @include grid(1, $spacing-lg);
-    
-    @include respond-to(md) {
-      @include grid(2, $spacing-lg);
-    }
-    
-    @include respond-to(lg) {
-      @include grid(3, $spacing-lg);
-    }
-  }
-  
-  // Tarjeta de especialidad
-  .specialty-card {
-    @include card-base;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    transition: transform $transition-normal, box-shadow $transition-normal;
-    
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: $shadow-lg;
-    }
-    
-    &__image {
-      height: 200px;
-      overflow: hidden;
       
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform $transition-normal;
-      }
-    }
-    
-    &:hover &__image img {
-      transform: scale(1.05);
-    }
-    
-    &__content {
-      padding: $spacing-lg;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    &__icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 0 $spacing-md;
-      background-color: rgba($color-primary, 0.1);
-      border-radius: $border-radius-full;
-      @include flex($justify: center, $align: center);
-      
-      i, svg {
-        font-size: $font-size-2xl;
-        color: $color-primary;
-      }
-    }
-    
-    &__title {
-      @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
-      margin-bottom: $spacing-md;
-    }
-    
-    &__description {
-      margin-bottom: $spacing-lg;
-      color: $color-text-light;
-      flex-grow: 1;
-    }
-    
-    &__features {
-      margin-bottom: $spacing-lg;
-      
-      li {
-        position: relative;
-        padding-left: $spacing-lg;
-        margin-bottom: $spacing-sm;
-        color: $color-text-light;
-        
-        &::before {
-          content: '✓';
-          position: absolute;
-          left: 0;
-          color: $color-primary;
-        }
-      }
-    }
-    
-    &__link {
-      align-self: flex-start;
-      
-      &:after {
-        content: '→';
-        margin-left: $spacing-xs;
-        transition: margin-left $transition-normal;
-      }
-      
-      &:hover, &:focus {
-        &::after {
-          margin-left: $spacing-sm;
-        }
-      }
-    }
-  }
-  
-  // Detalle de especialidad
-  .specialty-detail {
-    padding: $spacing-3xl 0;
-    
-    &__content {
-      @include respond-to(lg) {
-        display: flex;
-        gap: $spacing-2xl;
-      }
-    }
-    
-    &__main {
-      @include respond-to(lg) {
-        flex: 2;
-      }
-    }
-    
-    &__sidebar {
-      margin-top: $spacing-2xl;
-      
-      @include respond-to(lg) {
-        flex: 1;
-        margin-top: 0;
-      }
-    }
-    
-    &__image {
-      margin-bottom: $spacing-lg;
-      border-radius: $border-radius-md;
-      overflow: hidden;
-      
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-    
-    &__title {
-      @include font-style($size: $font-size-3xl, $weight: $font-weight-bold);
-      margin-bottom: $spacing-md;
-    }
-    
-    &__text {
-      margin-bottom: $spacing-xl;
-      
-      p {
-        margin-bottom: $spacing-md;
-      }
-      
-      h3 {
-        @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
-        margin: $spacing-xl 0 $spacing-md;
-      }
-      
-      ul, ol {
-        margin-bottom: $spacing-md;
-        padding-left: $spacing-xl;
-        
-        li {
-          margin-bottom: $spacing-sm;
-        }
-      }
-      
-      ul {
-        list-style-type: disc;
-      }
-      
-      ol {
-        list-style-type: decimal;
-      }
-    }
-  }
-  
-  // Widget de sidebar
-  .sidebar-widget {
-    @include card-base;
-    margin-bottom: $spacing-lg;
-    
-    &__title {
-      @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
-      padding: $spacing-md $spacing-lg;
-      border-bottom: 1px solid $color-border;
-    }
-    
-    &__content {
-      padding: $spacing-lg;
-    }
-    
-    // Widget de médicos relacionados
-    &--doctors {
-      .doctor-item {
-        @include flex($align: center);
-        padding: $spacing-md 0;
-        border-bottom: 1px solid $color-border;
-        
-        &:last-child {
-          border-bottom: none;
-          padding-bottom: 0;
-        }
-        
-        &__image {
-          width: 60px;
-          height: 60px;
-          border-radius: $border-radius-full;
-          overflow: hidden;
-          margin-right: $spacing-md;
-          
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        
-        &__info {
-          h4 {
-            @include font-style($weight: $font-weight-semibold);
-            margin-bottom: $spacing-xs;
-          }
-          
-          p {
-            color: $color-primary;
-            font-size: $font-size-sm;
-          }
-        }
-      }
-    }
-    
-    // Widget de contacto rápido
-    &--contact {
-      .contact-info {
-        li {
-          @include flex($align: flex-start);
-          margin-bottom: $spacing-md;
-          
-          i {
-            color: $color-primary;
-            min-width: 20px;
-            margin-right: $spacing-sm;
-            margin-top: 4px;
-          }
-          
-          span {
-            color: $color-text;
-          }
-        }
-      }
-      
-      .btn {
-        margin-top: $spacing-md;
-      }
-    }
-  }
-  
-  // Llamada a la acción para agendar cita
-  .appointment-cta {
-    @include card-base;
-    padding: $spacing-xl;
-    background: linear-gradient(to right, $color-primary, $color-primary-dark);
-    color: $color-white;
-    text-align: center;
-    
-    &__title {
-      @include font-style($size: $font-size-2xl, $weight: $font-weight-bold);
-      margin-bottom: $spacing-md;
-    }
-    
-    &__text {
-      margin-bottom: $spacing-lg;
-      opacity: 0.9;
-    }
-    
-    .btn--light {
-      background-color: $color-white;
-      color: $color-primary;
-      
-      &:hover, &:focus {
-        background-color: transparent;
-        border-color: $color-white;
+      &.active {
         color: $color-white;
       }
     }
   }
+}
+
+// Sección de especialidades
+.specialties {
+  padding: $spacing-3xl 0;
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+  
+  .section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto $spacing-2xl;
+    color: $color-text-light;
+  }
+}
+
+// Lista de especialidades
+.specialty-list {
+  @include grid(1, $spacing-lg);
+  
+  @include respond-to(md) {
+    @include grid(2, $spacing-lg);
+  }
+  
+  @include respond-to(lg) {
+    @include grid(3, $spacing-lg);
+  }
+}
+
+// Tarjeta de especialidad
+.specialty-card {
+  @include card-base;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &__image {
+    height: 200px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-normal;
+    }
+  }
+  
+  &:hover &__image img {
+    transform: scale(1.05);
+  }
+  
+  &__content {
+    padding: $spacing-lg;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 $spacing-md;
+    background-color: rgba($color-primary, 0.1);
+    border-radius: $border-radius-full;
+    @include flex($justify: center, $align: center);
+    
+    i, svg {
+      font-size: $font-size-2xl;
+      color: $color-primary;
+    }
+  }
+  
+  &__title {
+    @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
+    margin-bottom: $spacing-md;
+  }
+  
+  &__description {
+    margin-bottom: $spacing-lg;
+    color: $color-text-light;
+    flex-grow: 1;
+  }
+  
+  &__features {
+    margin-bottom: $spacing-lg;
+    
+    li {
+      position: relative;
+      padding-left: $spacing-lg;
+      margin-bottom: $spacing-sm;
+      color: $color-text-light;
+      
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: $color-primary;
+      }
+    }
+  }
+  
+  &__link {
+    align-self: flex-start;
+    
+    &:after {
+      content: '→';
+      margin-left: $spacing-xs;
+      transition: margin-left $transition-normal;
+    }
+    
+    &:hover, &:focus {
+      &::after {
+        margin-left: $spacing-sm;
+      }
+    }
+  }
+}
+
+// Detalle de especialidad
+.specialty-detail {
+  padding: $spacing-3xl 0;
+  
+  &__content {
+    @include respond-to(lg) {
+      display: flex;
+      gap: $spacing-2xl;
+    }
+  }
+  
+  &__main {
+    @include respond-to(lg) {
+      flex: 2;
+    }
+  }
+  
+  &__sidebar {
+    margin-top: $spacing-2xl;
+    
+    @include respond-to(lg) {
+      flex: 1;
+      margin-top: 0;
+    }
+  }
+  
+  &__image {
+    margin-bottom: $spacing-lg;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  &__title {
+    @include font-style($size: $font-size-3xl, $weight: $font-weight-bold);
+    margin-bottom: $spacing-md;
+  }
+  
+  &__text {
+    margin-bottom: $spacing-xl;
+    
+    p {
+      margin-bottom: $spacing-md;
+    }
+    
+    h3 {
+      @include font-style($size: $font-size-xl, $weight: $font-weight-semibold);
+      margin: $spacing-xl 0 $spacing-md;
+    }
+    
+    ul, ol {
+      margin-bottom: $spacing-md;
+      padding-left: $spacing-xl;
+      
+      li {
+        margin-bottom: $spacing-sm;
+      }
+    }
+    
+    ul {
+      list-style-type: disc;
+    }
+    
+    ol {
+      list-style-type: decimal;
+    }
+  }
+}
+
+// Widget de sidebar
+.sidebar-widget {
+  @include card-base;
+  margin-bottom: $spacing-lg;
+  
+  &__title {
+    @include font-style($size: $font-size-lg, $weight: $font-weight-semibold);
+    padding: $spacing-md $spacing-lg;
+    border-bottom: 1px solid $color-border;
+  }
+  
+  &__content {
+    padding: $spacing-lg;
+  }
+  
+  // Widget de médicos relacionados
+  &--doctors {
+    .doctor-item {
+      @include flex($align: center);
+      padding: $spacing-md 0;
+      border-bottom: 1px solid $color-border;
+      
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      
+      &__image {
+        width: 60px;
+        height: 60px;
+        border-radius: $border-radius-full;
+        overflow: hidden;
+        margin-right: $spacing-md;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      
+      &__info {
+        h4 {
+          @include font-style($weight: $font-weight-semibold);
+          margin-bottom: $spacing-xs;
+        }
+        
+        p {
+          color: $color-primary;
+          font-size: $font-size-sm;
+        }
+      }
+    }
+  }
+  
+  // Widget de contacto rápido
+  &--contact {
+    .contact-info {
+      li {
+        @include flex($align: flex-start);
+        margin-bottom: $spacing-md;
+        
+        i {
+          color: $color-primary;
+          min-width: 20px;
+          margin-right: $spacing-sm;
+          margin-top: 4px;
+        }
+        
+        span {
+          color: $color-text;
+        }
+      }
+    }
+    
+    .btn {
+      margin-top: $spacing-md;
+    }
+  }
+}
+
+// Llamada a la acción para agendar cita
+.appointment-cta {
+  @include card-base;
+  padding: $spacing-xl;
+  background: linear-gradient(to right, $color-primary, $color-primary-dark);
+  color: $color-white;
+  text-align: center;
+  
+  &__title {
+    @include font-style($size: $font-size-2xl, $weight: $font-weight-bold);
+    margin-bottom: $spacing-md;
+  }
+  
+  &__text {
+    margin-bottom: $spacing-lg;
+    opacity: 0.9;
+  }
+  
+  .btn--light {
+    background-color: $color-white;
+    color: $color-primary;
+    
+    &:hover, &:focus {
+      background-color: transparent;
+      border-color: $color-white;
+      color: $color-white;
+    }
+  }
+}

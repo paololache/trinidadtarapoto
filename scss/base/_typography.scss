@@ -1,0 +1,180 @@
+// Estilos de tipografía base
+body {
+  font-family: $font-primary;
+  color: $color-text;
+  line-height: $line-height-normal;
+}
+
+// Cabeceras
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+  color: $color-text;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  
+  @include respond-to(md) {
+    font-size: $font-size-5xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  
+  @include respond-to(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-2xl;
+}
+
+h4 {
+  font-size: $font-size-xl;
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-base;
+}
+
+// Párrafos
+p {
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Enlaces
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-normal;
+  
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+// Listas
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-xl;
+  
+  li {
+    margin-bottom: $spacing-xs;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+// Texto pequeño
+small, .text-small {
+  font-size: $font-size-sm;
+}
+
+// Texto grande
+.text-large {
+  font-size: $font-size-lg;
+}
+
+// Texto en negrita
+strong, .text-bold {
+  font-weight: $font-weight-bold;
+}
+
+// Texto en cursiva
+em, .text-italic {
+  font-style: italic;
+}
+
+// Alineación de texto
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Transformación de texto
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// Colores de texto
+.text-primary {
+  color: $color-primary;
+}
+
+.text-secondary {
+  color: $color-secondary;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+.text-muted {
+  color: $color-text-light;
+}
+
+// Títulos de sección
+.section-title {
+  @include font-style($size: $font-size-3xl, $weight: $font-weight-bold);
+  margin-bottom: $spacing-xl;
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--light {
+    color: $color-white;
+  }
+}
+
+// Subtítulos de sección
+.section-subtitle {
+  @include font-style($size: $font-size-lg, $line-height: $line-height-relaxed);
+  margin-bottom: $spacing-xl;
+  color: $color-text-light;
+  
+  &--center {
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  &--light {
+    color: rgba($color-white, 0.9);
+  }
+}

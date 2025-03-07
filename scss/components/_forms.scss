@@ -1,165 +1,167 @@
+
+
 // Estilos de formularios
 .form {
-    &__group {
-      margin-bottom: $spacing-lg;
-    }
-    
-    &__label {
-      display: block;
-      margin-bottom: $spacing-sm;
-      @include font-style($weight: $font-weight-medium);
-    }
-    
-    &__input,
-    &__textarea,
-    &__select {
-      width: 100%;
-      padding: $spacing-sm $spacing-md;
-      border: $border-width-thin solid $color-border;
-      border-radius: $border-radius-md;
-      font-family: $font-primary;
-      font-size: $font-size-base;
-      background-color: $color-white;
-      transition: border-color $transition-normal, box-shadow $transition-normal;
-      
-      &:focus {
-        outline: none;
-        border-color: $color-primary;
-        box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
-      }
-      
-      &::placeholder {
-        color: $color-text-lighter;
-      }
-      
-      &.is-invalid {
-        border-color: #dc3545;
-        
-        &:focus {
-          box-shadow: 0 0 0 3px rgba(#dc3545, 0.1);
-        }
-      }
-    }
-    
-    &__textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    &__select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right $spacing-md center;
-      padding-right: $spacing-2xl;
-    }
-    
-    &__check {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: $spacing-md;
-      
-      input[type="checkbox"],
-      input[type="radio"] {
-        margin-right: $spacing-sm;
-        margin-top: 0.2em;
-      }
-    }
-    
-    &__error {
-      display: block;
-      margin-top: $spacing-xs;
-      color: #dc3545;
-      font-size: $font-size-sm;
-    }
-    
-    &__help {
-      display: block;
-      margin-top: $spacing-xs;
-      color: $color-text-light;
-      font-size: $font-size-sm;
-    }
-    
-    &__actions {
-      margin-top: $spacing-xl;
-      
-      .btn {
-        margin-right: $spacing-md;
-      }
-    }
+  &__group {
+    margin-bottom: $spacing-lg;
   }
   
-  // Formulario de contacto
-  .contact-form {
-    @include card-base;
-    padding: $spacing-xl;
+  &__label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    @include font-style($weight: $font-weight-medium);
   }
   
-  // Formulario de búsqueda
-  .search-form {
-    position: relative;
-    
-    &__input {
-      width: 100%;
-      padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
-      border: $border-width-thin solid $color-border;
-      border-radius: $border-radius-md;
-      font-family: $font-primary;
-      font-size: $font-size-base;
-      
-      &:focus {
-        outline: none;
-        border-color: $color-primary;
-        box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
-      }
-    }
-    
-    &__button {
-      position: absolute;
-      top: 50%;
-      right: $spacing-sm;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: $color-text-light;
-      cursor: pointer;
-      
-      &:hover, &:focus {
-        color: $color-primary;
-      }
-    }
-  }
-  
-  // Formulario de cita
-  .appointment-form {
-    background-color: $color-white;
+  &__input,
+  &__textarea,
+  &__select {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: $border-width-thin solid $color-border;
     border-radius: $border-radius-md;
-    box-shadow: $shadow-lg;
-    padding: $spacing-xl;
-    border-top: 4px solid $color-primary;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    background-color: $color-white;
+    transition: border-color $transition-normal, box-shadow $transition-normal;
     
-    &__title {
-      text-align: center;
-      margin-bottom: $spacing-xl;
-      @include font-style($size: $font-size-2xl, $weight: $font-weight-bold);
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+    }
+    
+    &::placeholder {
+      color: $color-text-lighter;
+    }
+    
+    &.is-invalid {
+      border-color: #dc3545;
       
-      span {
-        color: $color-primary;
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(#dc3545, 0.1);
       }
-    }
-    
-    .form__group--inline {
-      @include respond-to(md) {
-        display: flex;
-        gap: $spacing-md;
-        
-        > * {
-          flex: 1;
-        }
-      }
-    }
-    
-    .btn--full {
-      margin-top: $spacing-md;
     }
   }
+  
+  &__textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $spacing-md center;
+    padding-right: $spacing-2xl;
+  }
+  
+  &__check {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: $spacing-md;
+    
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: $spacing-sm;
+      margin-top: 0.2em;
+    }
+  }
+  
+  &__error {
+    display: block;
+    margin-top: $spacing-xs;
+    color: #dc3545;
+    font-size: $font-size-sm;
+  }
+  
+  &__help {
+    display: block;
+    margin-top: $spacing-xs;
+    color: $color-text-light;
+    font-size: $font-size-sm;
+  }
+  
+  &__actions {
+    margin-top: $spacing-xl;
+    
+    .btn {
+      margin-right: $spacing-md;
+    }
+  }
+}
+
+// Formulario de contacto
+.contact-form {
+  @include card-base;
+  padding: $spacing-xl;
+}
+
+// Formulario de búsqueda
+.search-form {
+  position: relative;
+  
+  &__input {
+    width: 100%;
+    padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
+    border: $border-width-thin solid $color-border;
+    border-radius: $border-radius-md;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+    }
+  }
+  
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: $spacing-sm;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: $color-text-light;
+    cursor: pointer;
+    
+    &:hover, &:focus {
+      color: $color-primary;
+    }
+  }
+}
+
+// Formulario de cita
+.appointment-form {
+  background-color: $color-white;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  padding: $spacing-xl;
+  border-top: 4px solid $color-primary;
+  
+  &__title {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    @include font-style($size: $font-size-2xl, $weight: $font-weight-bold);
+    
+    span {
+      color: $color-primary;
+    }
+  }
+  
+  .form__group--inline {
+    @include respond-to(md) {
+      display: flex;
+      gap: $spacing-md;
+      
+      > * {
+        flex: 1;
+      }
+    }
+  }
+  
+  .btn--full {
+    margin-top: $spacing-md;
+  }
+}
