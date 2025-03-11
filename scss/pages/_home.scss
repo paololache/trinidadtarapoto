@@ -1,78 +1,52 @@
+// Hero Section
 .hero {
   position: relative;
-  padding: $spacing-md 0; // Menos padding en móviles
+  padding: 0; // Quitamos padding para mejor control
   color: $color-white;
-  height: 100vh; // Altura completa de la ventana en móviles
+  height: 100vh; // Altura completa para dispositivos móviles
   
-  @include respond-to(md) {
-    padding: $spacing-lg 0;
-    height: 80vh; // Ajusta según necesites para tablets
+  @media (min-width: $breakpoint-md) {
+    height: 80vh; // Altura para tablets
   }
   
-  @include respond-to(lg) {
-    padding: $spacing-xl 0;
-    min-height: 90vh; // Mantén tu altura original para escritorio
+  @media (min-width: $breakpoint-lg) {
+    height: 90vh; // Altura para desktop
   }
-  
-  &__buttons {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: 100%;
-    
-    // En móviles, posicionar cerca del fondo
+}
+
+.hero__buttons {
   position: absolute;
-  bottom: 15%;
+  bottom: 20%; // Posición desde la parte inferior
   left: 0;
+  width: 100%;
+  z-index: 5; // Aseguramos que esté por encima del carrusel
+  text-align: center;
+}
 
-  .btn {
-    margin: 0 $spacing-xs $spacing-sm; // Menos margen en móviles
-    // Para móviles, hacer los botones más grandes para fácil toque
+.hero__buttons .btn {
+  margin: 0 $spacing-xs $spacing-md; // Margen para separación de botones
+  
+  // En móviles, botones más grandes y apilados
+  @media (max-width: 576px) {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing-md;
     padding: $spacing-md $spacing-lg;
-    font-size: $font-size-base;
-    
-    // En móviles, considerar botones a ancho completo o casi completo
-    @media (max-width: 576px) {
-      display: block;
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: $spacing-md;
-    }
-    
-    @include respond-to(md) {
-      margin: 0 $spacing-sm $spacing-md;
-      // Tamaño normal para tablets y escritorio
-    }
-  }
-    
-    @include respond-to(lg) {
-      margin-top: 0;
-      position: absolute;
-      bottom: 20%; // Posición desde abajo en pantallas grandes
-      width: 100%;
-      left: 0;
-    }
+    font-size: $font-size-lg;
   }
   
-  // Eliminar cualquier referencia a &__content, &__title, &__subtitle que ya no usarás
-}
-
-@media (max-width: 768px) {
-  .hero-carousel__slide:nth-child(1) {
-    background-position: 40% center; // Ajustado para la primera imagen
-  }
-  
-  .hero-carousel__slide:nth-child(2) {
-    background-position: 60% center; // Ajustado para la segunda imagen
-  }
-  
-  .hero-carousel__slide:nth-child(3) {
-    background-position: center center; // Ajustado para la tercera imagen
+  // Tablets y desktop
+  @media (min-width: $breakpoint-md) {
+    display: inline-block;
+    width: auto;
+    margin: 0 $spacing-sm $spacing-md;
+    
+    // Opcional: añadir sombra para mejor visibilidad
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 }
-
-
 
 // Hero Carousel
 .hero-carousel {
@@ -83,197 +57,231 @@
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  
-  &__slides {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  
-  &__slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity $transition-slow;
-    z-index: 1;
+}
 
-    @media (max-width: 768px) {
-      background-position: center center; // Ajusta el punto focal para móviles
-    }
+.hero-carousel__slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 
-    &--active {
-      opacity: 1;
-      z-index: 2;
+.hero-carousel__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center; // Centrado por defecto
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  z-index: 1;
+  
+  // Asegurar que las imágenes estén perfectamente centradas en móviles
+  @media (max-width: 768px) {
+    background-position: center center !important; // Forzar centrado en móviles
+  }
+}
 
-    }
+.hero-carousel__slide--active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.hero-carousel__controls {
+  position: absolute;
+  bottom: 10%; // Un poco más arriba para que no choque con los botones
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: $spacing-md;
+  z-index: 10; // Mayor z-index para asegurar visibilidad
+}
+
+.hero-carousel__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: rgba($color-white, 0.5);
+  border: 2px solid rgba($color-white, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  
+  // Aumentar tamaño para móviles (más fácil de tocar)
+  @media (max-width: 576px) {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.hero-carousel__dot--active {
+  background-color: $color-white;
+  transform: scale(1.2);
+}
+
+.hero-carousel__dot:hover {
+  background-color: rgba($color-white, 0.8);
+}
+
+// Botones de navegación
+.hero-carousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: $color-white;
+  font-size: $font-size-2xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  // Mejorar visibilidad al hacer hover
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
   }
   
-  &__controls {
-    position: absolute;
-    bottom: $spacing-xl;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: $spacing-md;
-    z-index: 3;
+  // Ocultar en móviles para ahorrar espacio
+  @media (max-width: 768px) {
+    display: none;
   }
   
-  &__dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba($color-white, 0.5);
-    border: none;
-    cursor: pointer;
-    transition: all $transition-normal;
-    padding: 0;
-    
-    &--active {
-      background-color: $color-white;
-      width: 15px;
-      height: 15px;
-    }
-    
-    &:hover {
-      background-color: rgba($color-white, 0.8);
-    }
+  // Aumentar tamaño en tablets
+  @media (min-width: $breakpoint-md) {
+    width: 60px;
+    height: 60px;
   }
+}
+
+.hero-carousel__nav--prev {
+  left: $spacing-xl;
+}
+
+.hero-carousel__nav--next {
+  right: $spacing-xl;
 }
 
 // Servicios destacados
 .featured-services {
   padding: $spacing-3xl 0;
   background-color: $color-background-light;
+}
+
+.featured-services .section-title {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
   
-  .section-title {
-    text-align: center;
-    margin-bottom: $spacing-2xl;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .services-grid {
-    @include grid(1, $spacing-lg);
-    margin-bottom: $spacing-2xl;
-    
-    @include respond-to(md) {
-      @include grid(2, $spacing-lg);
-    }
-    
-    @include respond-to(lg) {
-      @include grid(3, $spacing-lg);
-    }
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  &__more {
-    text-align: center;
-  }
+}
+
+.featured-services__more {
+  text-align: center;
 }
 
 // Por qué elegirnos
 .why-us {
   padding: $spacing-3xl 0;
-  
-  &__content {
-    @include respond-to(lg) {
-      @include flex($align: center);
-    }
+}
+
+.why-us__content {
+  @media (min-width: $breakpoint-lg) {
+    display: flex;
+    align-items: center;
   }
-  
-  &__text {
-    @include respond-to(lg) {
-      flex: 1;
-      padding-right: $spacing-2xl;
-    }
+}
+
+.why-us__text {
+  @media (min-width: $breakpoint-lg) {
+    flex: 1;
+    padding-right: $spacing-2xl;
   }
+}
+
+.why-us__list {
+  margin: $spacing-xl 0;
+}
+
+.why-us__list li {
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: center;
+}
+
+.why-us__list li i {
+  color: $color-primary;
+  margin-right: $spacing-md;
+}
+
+.why-us__image {
+  margin-top: $spacing-2xl;
   
-  &__list {
-    margin: $spacing-xl 0;
-    
-    li {
-      margin-bottom: $spacing-md;
-      @include flex($align: center);
-      
-      i {
-        color: $color-primary;
-        margin-right: $spacing-md;
-      }
-    }
+  @media (min-width: $breakpoint-lg) {
+    flex: 1;
+    margin-top: 0;
   }
-  
-  &__image {
-    margin-top: $spacing-2xl;
-    
-    @include respond-to(lg) {
-      flex: 1;
-      margin-top: 0;
-    }
-    
-    img {
-      border-radius: $border-radius-lg;
-      box-shadow: $shadow-lg;
-    }
-  }
+}
+
+.why-us__image img {
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  width: 100%;
+  height: auto;
 }
 
 // Testimonios
 .testimonials {
   padding: $spacing-3xl 0;
   background-color: $color-background-light;
-  
-  .section-title {
-    text-align: center;
-    margin-bottom: $spacing-2xl;
-  }
+}
+
+.testimonials .section-title {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
 }
 
 // Últimas noticias
 .latest-news {
   padding: $spacing-3xl 0;
+}
+
+.latest-news .section-title {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
   
-  .section-title {
-    text-align: center;
-    margin-bottom: $spacing-2xl;
-  }
-  
-  .news-grid {
-    @include grid(1, $spacing-lg);
-    margin-bottom: $spacing-2xl;
-    
-    @include respond-to(md) {
-      @include grid(2, $spacing-lg);
-    }
-    
-    @include respond-to(lg) {
-      @include grid(2, $spacing-lg);
-    }
-  }
-  
-  &__more {
-    text-align: center;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-// Header Banner Image
-.header-banner {
-  padding: $spacing-md 0;
-  background-color: $color-background-light;
-  
-  &__image {
-    width: 100%;
-    border-radius: $border-radius-lg;
-    overflow: hidden;
-    box-shadow: $shadow-md;
-    
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
+.latest-news__more {
+  text-align: center;
 }
 
 // Call to Action
@@ -284,20 +292,21 @@
   background-position: center;
   color: $color-white;
   text-align: center;
-  
-  &__content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  &__title {
-    @include font-style($size: $font-size-3xl, $weight: $font-weight-bold);
-    margin-bottom: $spacing-md;
-  }
-  
-  &__text {
-    @include font-style($size: $font-size-lg);
-    margin-bottom: $spacing-xl;
-    opacity: 0.9;
-  }
+}
+
+.cta__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta__title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-md;
+}
+
+.cta__text {
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-xl;
+  opacity: 0.9;
 }
