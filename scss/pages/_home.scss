@@ -1,33 +1,50 @@
 .hero {
   position: relative;
-  padding: $spacing-4xl 0;
+  padding: $spacing-md 0; // Menos padding en móviles
   color: $color-white;
+  height: 100vh; // Altura completa de la ventana en móviles
   
   @include respond-to(md) {
-    padding: $spacing-4xl 0;
+    padding: $spacing-lg 0;
+    height: 80vh; // Ajusta según necesites para tablets
   }
   
   @include respond-to(lg) {
-    padding: $spacing-4xl 0 $spacing-4xl;
-    min-height: 90vh;
-    @include flex($align: center);
+    padding: $spacing-xl 0;
+    min-height: 90vh; // Mantén tu altura original para escritorio
   }
   
   &__buttons {
     position: relative;
     z-index: 2;
-    margin-top: 60vh; // Posiciona los botones hacia la parte inferior
-    text-align: center; // Centra los botones horizontalmente
+    text-align: center;
+    width: 100%;
     
-    .btn {
-      margin: 0 $spacing-sm $spacing-md;
-      // Opcional: Hacer los botones más grandes
-      padding: $spacing-md $spacing-xl;
-      font-size: $font-size-lg;
-      
-      // Opcional: Añadir un poco de sombra para mejor visibilidad
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    // En móviles, posicionar cerca del fondo
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+
+  .btn {
+    margin: 0 $spacing-xs $spacing-sm; // Menos margen en móviles
+    // Para móviles, hacer los botones más grandes para fácil toque
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
+    
+    // En móviles, considerar botones a ancho completo o casi completo
+    @media (max-width: 576px) {
+      display: block;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: $spacing-md;
     }
+    
+    @include respond-to(md) {
+      margin: 0 $spacing-sm $spacing-md;
+      // Tamaño normal para tablets y escritorio
+    }
+  }
     
     @include respond-to(lg) {
       margin-top: 0;
@@ -40,6 +57,22 @@
   
   // Eliminar cualquier referencia a &__content, &__title, &__subtitle que ya no usarás
 }
+
+@media (max-width: 768px) {
+  .hero-carousel__slide:nth-child(1) {
+    background-position: 40% center; // Ajustado para la primera imagen
+  }
+  
+  .hero-carousel__slide:nth-child(2) {
+    background-position: 60% center; // Ajustado para la segunda imagen
+  }
+  
+  .hero-carousel__slide:nth-child(3) {
+    background-position: center center; // Ajustado para la tercera imagen
+  }
+}
+
+
 
 // Hero Carousel
 .hero-carousel {
@@ -67,9 +100,16 @@
     background-position: center;
     opacity: 0;
     transition: opacity $transition-slow;
-    
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      background-position: center center; // Ajusta el punto focal para móviles
+    }
+
     &--active {
       opacity: 1;
+      z-index: 2;
+
     }
   }
   

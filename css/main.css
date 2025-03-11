@@ -1418,36 +1418,49 @@ em, .text-italic {
 
 .hero {
   position: relative;
-  padding: 6rem 0;
+  padding: 1rem 0;
   color: #ffffff;
+  height: 100vh;
 }
 @media (min-width: 768px) {
   .hero {
-    padding: 6rem 0;
+    padding: 1.5rem 0;
+    height: 80vh;
   }
 }
 @media (min-width: 992px) {
   .hero {
-    padding: 6rem 0 6rem;
+    padding: 2rem 0;
     min-height: 90vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
   }
 }
 .hero__buttons {
   position: relative;
   z-index: 2;
-  margin-top: 60vh;
   text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 15%;
+  left: 0;
 }
 .hero__buttons .btn {
-  margin: 0 0.5rem 1rem;
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 0 0.25rem 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+@media (max-width: 576px) {
+  .hero__buttons .btn {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .hero__buttons .btn {
+    margin: 0 0.5rem 1rem;
+  }
 }
 @media (min-width: 992px) {
   .hero__buttons {
@@ -1459,6 +1472,17 @@ em, .text-italic {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-carousel__slide:nth-child(1) {
+    background-position: 40% center;
+  }
+  .hero-carousel__slide:nth-child(2) {
+    background-position: 60% center;
+  }
+  .hero-carousel__slide:nth-child(3) {
+    background-position: center center;
+  }
+}
 .hero-carousel {
   position: absolute;
   top: 0;
@@ -1483,9 +1507,16 @@ em, .text-italic {
   background-position: center;
   opacity: 0;
   transition: opacity 0.5s ease;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .hero-carousel__slide {
+    background-position: center center;
+  }
 }
 .hero-carousel__slide--active {
   opacity: 1;
+  z-index: 2;
 }
 .hero-carousel__controls {
   position: absolute;
