@@ -48,6 +48,8 @@ button:focus {
 
 ul, ol {
   list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
 
 /* Clases de accesibilidad */
@@ -1118,12 +1120,18 @@ em, .text-italic {
   flex-wrap: nowrap;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .nav__item {
   margin-left: 1.5rem;
 }
 .nav__item:first-child {
   margin-left: 0;
+}
+.nav-mobile__list {
+  margin-top: 3rem;
+  list-style: none;
+  padding-left: 0;
 }
 .nav__link {
   font-size: 1rem;
@@ -1157,12 +1165,12 @@ em, .text-italic {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background-color: transparent;
   border: none;
   color: #212529;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 @media (min-width: 992px) {
@@ -1177,11 +1185,11 @@ em, .text-italic {
 .nav-mobile {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 300px;
+  right: -320px;
+  width: 320px;
   height: 100vh;
   background-color: #ffffff;
-  z-index: 1030;
+  z-index: 1040;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: right 0.3s ease;
   padding: 2rem;
@@ -1194,27 +1202,27 @@ em, .text-italic {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: #212529;
 }
 .nav-mobile__close:hover, .nav-mobile__close:focus {
   color: #4CAF50;
 }
 .nav-mobile__list {
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 .nav-mobile__item {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .nav-mobile__link {
   display: block;
-  padding: 0.5rem 0;
-  font-size: 1.125rem;
+  padding: 1rem 0;
+  font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.5;
   color: #212529;
@@ -1224,20 +1232,7 @@ em, .text-italic {
 }
 
 .nav-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1040;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.nav-overlay.is-active {
-  opacity: 1;
-  visibility: visible;
+  display: none;
 }
 
 .header {
@@ -1442,57 +1437,26 @@ em, .text-italic {
     flex-wrap: nowrap;
   }
 }
-.hero__overlay {
-  display: none; /* Eliminamos el overlay morado */
-}
-.hero__content {
+.hero__buttons {
   position: relative;
   z-index: 2;
-  max-width: 800px;
-  background-color: rgba(0, 0, 0, 0.125); /* Reducimos la opacidad para que sea menos intrusivo */
-  padding: 2rem;
-  border-radius: 0.75rem;
-  backdrop-filter: blur(10px); /* Reducimos el desenfoque */
-  display: inline-block; /* Para que se ajuste al contenido */
+  margin-top: 60vh;
+  text-align: center;
 }
-@media (min-width: 992px) {
-  .hero__content {
-    margin-right: auto;
-  }
-}
-.hero__title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: #212529;
-  margin-bottom: 1.5rem;
-}
-@media (min-width: 768px) {
-  .hero__title {
-    font-size: 2.25rem;
-  }
-}
-@media (min-width: 992px) {
-  .hero__title {
-    font-size: 3rem;
-  }
-}
-.hero__subtitle {
+.hero__buttons .btn {
+  margin: 0 0.5rem 1rem;
+  padding: 1rem 2rem;
   font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.75;
-  color: #212529;
-  margin-bottom: 2rem;
-  opacity: 0.9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-@media (min-width: 768px) {
-  .hero__subtitle {
-    font-size: 1.25rem;
+@media (min-width: 992px) {
+  .hero__buttons {
+    margin-top: 0;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    left: 0;
   }
-}
-.hero__cta .btn {
-  margin-right: 1rem;
-  margin-bottom: 1rem;
 }
 
 .hero-carousel {

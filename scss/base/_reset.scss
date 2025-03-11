@@ -51,6 +51,8 @@ button {
 
 ul, ol {
   list-style: none;
+  padding-left: 0; // Añadir esto si no lo tienes
+  margin: 0; // Añadir esto si no lo tienes
 }
 
 /* Clases de accesibilidad */

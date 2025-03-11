@@ -21,12 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Crear y gestionar la navegación móvil
     function setupMobileNav() {
-        // Crear el overlay
-        overlay = document.createElement('div');
-        overlay.className = 'nav-overlay';
-        document.body.appendChild(overlay);
+        console.log('Configurando navegación móvil');
+        
+        // Ya no creamos el overlay
         
         // Crear el menú móvil
         mobileNav = document.createElement('div');
@@ -49,43 +47,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Botón de cierre
-        const closeBtn = document.createElement('button');
-        closeBtn.className = 'nav-mobile__close';
-        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
-        closeBtn.setAttribute('aria-label', 'Cerrar menú');
-        
-        // Agregar elementos al menú móvil
-        mobileNav.appendChild(closeBtn);
-        mobileNav.appendChild(navContent);
-        
-        // Agregar el menú al body
-        document.body.appendChild(mobileNav);
-        
-        // Event listeners
-        navToggle.addEventListener('click', openMobileNav);
-        closeBtn.addEventListener('click', closeMobileNav);
-        overlay.addEventListener('click', closeMobileNav);
-        
-        // Cerrar al cambiar tamaño de ventana
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 992) { // 992px es el breakpoint lg
+        // Importante: Mantener la funcionalidad de los enlaces
+        navContent.querySelectorAll('.nav__link').forEach(link => {
+            // Guardar la URL original antes de cambiar la clase
+            const href = link.getAttribute('href');
+            const isActive = link.classList.contains('nav__link--active');
+            
+            // Asignar nuevas clases
+            link.className = isActive ? 'nav-mobile__link nav-mobile__link--active' : 'nav-mobile__link';
+            
+            // Asegurarse de mantener el href original
+            link.setAttribute('href', href);
+            
+            // Agregar evento para cerrar el menú al hacer clic
+            link.addEventListener('click', function(e) {
+                // No prevenir la navegación predeterminada
                 closeMobileNav();
-            }
+            });
         });
-    }
+        
+         // Botón de cierre
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'nav-mobile__close';
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    closeBtn.setAttribute('aria-label', 'Cerrar menú');
     
-    function openMobileNav() {
-        mobileNav.classList.add('is-active');
-        overlay.classList.add('is-active');
-        document.body.style.overflow = 'hidden'; // Evitar scroll
-    }
+    // Agregar elementos al menú móvil
+    mobileNav.appendChild(closeBtn);
+    mobileNav.appendChild(navContent);
     
-    function closeMobileNav() {
-        mobileNav.classList.remove('is-active');
-        overlay.classList.remove('is-active');
-        document.body.style.overflow = ''; // Restaurar scroll
-    }
+    // Agregar el menú al body
+    document.body.appendChild(mobileNav);
+    
+    // Event listeners
+    navToggle.addEventListener('click', openMobileNav);
+    closeBtn.addEventListener('click', closeMobileNav);
+    
+    // Ya no necesitamos event listener para el overlay
+    
+    // Cerrar al cambiar tamaño de ventana
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) { // 992px es el breakpoint lg
+            closeMobileNav();
+        }
+    });
+}
+    
+function openMobileNav() {
+    mobileNav.classList.add('is-active');
+    // Ya no activamos el overlay
+    document.body.style.overflow = 'hidden'; // Evitar scroll
+}
+
+function closeMobileNav() {
+    mobileNav.classList.remove('is-active');
+    // Ya no desactivamos el overlay
+    document.body.style.overflow = ''; // Restaurar scroll
+}
     
     // Inicializar navegación móvil
     if (navToggle) {
