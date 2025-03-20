@@ -1,51 +1,20 @@
 // Hero Section
 .hero {
   position: relative;
-  padding: 0; // Quitamos padding para mejor control
-  color: $color-white;
-  height: 100vh; // Altura completa para dispositivos móviles
-  
-  @media (min-width: $breakpoint-md) {
-    height: 80vh; // Altura para tablets
-  }
-  
-  @media (min-width: $breakpoint-lg) {
-    height: 90vh; // Altura para desktop
-  }
-}
-
-.hero__buttons {
-  position: absolute;
-  bottom: 20%; // Posición desde la parte inferior
-  left: 0;
+  padding: 0;
+  margin: 0;
   width: 100%;
-  z-index: 5; // Aseguramos que esté por encima del carrusel
-  text-align: center;
-}
+  height: 100vh; // Usamos altura de viewport completa
+  overflow: hidden; // Evita desbordamiento
 
-.hero__buttons .btn {
-  margin: 0 $spacing-xs $spacing-md; // Margen para separación de botones
-  
-  // En móviles, botones más grandes y apilados
+  /* ajustar altura en diferentes dispositivos */ 
   @media (max-width: 576px) {
-    display: block;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: $spacing-md;
-    padding: $spacing-md $spacing-lg;
-    font-size: $font-size-lg;
+    height: 60vh; // Altura mas pequeña en moviles
   }
-  
-  // Tablets y desktop
-  @media (min-width: $breakpoint-md) {
-    display: inline-block;
-    width: auto;
-    margin: 0 $spacing-sm $spacing-md;
-    
-    // Opcional: añadir sombra para mejor visibilidad
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  @media (min-width: 577px) and (max-width: 991px) {
+    height: 80vh; // Altura media en tablets
   }
+
 }
 
 // Hero Carousel
@@ -55,7 +24,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+
   z-index: 0;
 }
 
@@ -71,15 +40,32 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center center; // Centrado por defecto
+  background-size: cover; // Cubre todo el contenedor
+  background-position: center 40%; // Centrado por defecto
   opacity: 0;
   transition: opacity 1.5s ease;
   z-index: 1;
   
-  // Asegurar que las imágenes estén perfectamente centradas en móviles
-  @media (max-width: 768px) {
-    background-position: center center !important; // Forzar centrado en móviles
+  /* Ajustes específicos para móviles */
+  @media (max-width: 576px) {
+    background-size: cover; // Asegura que la imagen cubra todo el espacio
+    background-position: center; // Centra la imagen
+    height: 100vh; // Altura completa del viewport
+    background-size: cover;
+    background-position: center 25%;
+    height: 80%; //Usar la altura del contenedor padre
+    background-position: center 25%; //ajustar posición vertical para móviles
+  }
+  
+  /* Ajustes específicos para tablets */
+  @media (min-width: 577px) and (max-width: 991px) {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-position: center 30%; //ajustar posición vertical para tablets
+    height: 80%; //Usar la altura del contenedor padre
+    background-position: center 30%; //ajustar posición vertical para móviles
+
   }
 }
 
@@ -88,43 +74,77 @@
   z-index: 2;
 }
 
+/* Botones de control */
+.hero__buttons {
+  position: absolute;
+  bottom: 10%; // Posición desde la parte inferior
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  text-align: center;
+  
+  @media (max-width: 576px) {
+    bottom: 15%; // Ajuste para móviles
+  }
+}
+
+.hero__buttons .btn {
+  margin: 0 10px 10px;
+  
+  /* Botones más grandes y apilados en móviles */
+  @media (max-width: 576px) {
+    display: block;
+    width: 80%;
+    margin: 0 auto 15px;
+    padding: 15px 20px;
+    font-size: 16px;
+  }
+  
+  /* Botones en tablets */
+  @media (min-width: 577px) and (max-width: 991px) {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Controles del carrusel */
 .hero-carousel__controls {
   position: absolute;
-  bottom: 10%; // Un poco más arriba para que no choque con los botones
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: $spacing-md;
-  z-index: 10; // Mayor z-index para asegurar visibilidad
+  gap: 10px;
+  z-index: 10;
 }
 
 .hero-carousel__dot {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: rgba($color-white, 0.5);
-  border: 2px solid rgba($color-white, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
   
-  // Aumentar tamaño para móviles (más fácil de tocar)
+  /* Más grandes en móviles para mejor interacción táctil */
   @media (max-width: 576px) {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 }
 
 .hero-carousel__dot--active {
-  background-color: $color-white;
+  background-color: white;
   transform: scale(1.2);
 }
 
 .hero-carousel__dot:hover {
-  background-color: rgba($color-white, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-// Botones de navegación
+/* Botones de navegación */
 .hero-carousel__nav {
   position: absolute;
   top: 50%;
@@ -135,61 +155,61 @@
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
-  color: $color-white;
-  font-size: $font-size-2xl;
+  color: white;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   
-  // Mejorar visibilidad al hacer hover
+  /* Mejorar visibilidad al hacer hover */
   &:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
   
-  // Ocultar en móviles para ahorrar espacio
+  /* Ocultar en móviles para ahorrar espacio */
   @media (max-width: 768px) {
     display: none;
   }
   
-  // Aumentar tamaño en tablets
-  @media (min-width: $breakpoint-md) {
+  /* Aumentar tamaño en tablets */
+  @media (min-width: 769px) and (max-width: 991px) {
     width: 60px;
     height: 60px;
   }
 }
 
 .hero-carousel__nav--prev {
-  left: $spacing-xl;
+  left: 30px;
 }
 
 .hero-carousel__nav--next {
-  right: $spacing-xl;
+  right: 30px;
 }
 
 // Servicios destacados
 .featured-services {
-  padding: $spacing-3xl 0;
-  background-color: $color-background-light;
+  padding: 60px 0;
+  background-color: #f8f9fa;
 }
 
 .featured-services .section-title {
   text-align: center;
-  margin-bottom: $spacing-2xl;
+  margin-bottom: 40px;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $spacing-lg;
-  margin-bottom: $spacing-2xl;
+  gap: 20px;
+  margin-bottom: 40px;
   
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: 992px) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -200,82 +220,82 @@
 
 // Por qué elegirnos
 .why-us {
-  padding: $spacing-3xl 0;
+  padding: 60px 0;
 }
 
 .why-us__content {
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: 992px) {
     display: flex;
     align-items: center;
   }
 }
 
 .why-us__text {
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: 992px) {
     flex: 1;
-    padding-right: $spacing-2xl;
+    padding-right: 40px;
   }
 }
 
 .why-us__list {
-  margin: $spacing-xl 0;
+  margin: 30px 0;
 }
 
 .why-us__list li {
-  margin-bottom: $spacing-md;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
 .why-us__list li i {
-  color: $color-primary;
-  margin-right: $spacing-md;
+  color: #4CAF50; // Color primario verde
+  margin-right: 15px;
 }
 
 .why-us__image {
-  margin-top: $spacing-2xl;
+  margin-top: 40px;
   
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: 992px) {
     flex: 1;
     margin-top: 0;
   }
 }
 
 .why-us__image img {
-  border-radius: $border-radius-lg;
-  box-shadow: $shadow-lg;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: auto;
 }
 
 // Testimonios
 .testimonials {
-  padding: $spacing-3xl 0;
-  background-color: $color-background-light;
+  padding: 60px 0;
+  background-color: #f8f9fa;
 }
 
 .testimonials .section-title {
   text-align: center;
-  margin-bottom: $spacing-2xl;
+  margin-bottom: 40px;
 }
 
 // Últimas noticias
 .latest-news {
-  padding: $spacing-3xl 0;
+  padding: 60px 0;
 }
 
 .latest-news .section-title {
   text-align: center;
-  margin-bottom: $spacing-2xl;
+  margin-bottom: 40px;
 }
 
 .news-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $spacing-lg;
-  margin-bottom: $spacing-2xl;
+  gap: 20px;
+  margin-bottom: 40px;
   
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -286,11 +306,11 @@
 
 // Call to Action
 .cta {
-  padding: $spacing-3xl 0;
-  background: linear-gradient(rgba($color-accent-dark, 0.9), rgba($color-accent-dark, 0.9)), url('../assets/images/cta-bg.jpg');
+  padding: 60px 0;
+  background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(0, 77, 64, 0.9)), url('../assets/images/cta-bg.jpg');
   background-size: cover;
   background-position: center;
-  color: $color-white;
+  color: white;
   text-align: center;
 }
 
@@ -300,13 +320,13 @@
 }
 
 .cta__title {
-  font-size: $font-size-3xl;
-  font-weight: $font-weight-bold;
-  margin-bottom: $spacing-md;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 .cta__text {
-  font-size: $font-size-lg;
-  margin-bottom: $spacing-xl;
+  font-size: 18px;
+  margin-bottom: 30px;
   opacity: 0.9;
 }
